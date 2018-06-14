@@ -8,36 +8,38 @@ var config = {
     projectId: "time-sheet-8bf7c",
     storageBucket: "",
     messagingSenderId: "655891623227"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
-  var database = firebase.database();
+var database = firebase.database();
 
-  // on click event listener for adding Trains
-  $("#submit").on("click", function(event) {
+// on click event listener for adding Trains
+$("#submit").on("click", function (event) {
     event.preventDefault();
 
-      // create variables to store and grab user input
-      var name = $("#name").val().trim();
-      var role = $("#role").val().trim();
-      var start = $("#start").val().trim();
-      var months = $("#months").val().trim();
-      var rate = $("#rate").val().trim();
 
-        
-        // add data to firebase
-      database.ref().push({
+      // create variables to store and grab user input
+    var name = $("#name").val().trim();
+    var role = $("#role").val().trim();
+    var start = $("#start").val().trim();
+    var months = $("#months").val().trim();
+    var rate = $("#rate").val().trim();
+
+
+
+    // add data to firebase
+    database.ref().push({
         name: name,
         role: role,
         start: start,
         months: months,
         rate: rate
-        });
+    });
 
-   // Alert
+    // Alert
     alert("Employee added succefully!");
 
-    // clear all of the text-boxes for new submission
+
       $("#name").val("");
       $("#role").val("");
       $("#start").val("");
@@ -46,10 +48,17 @@ var config = {
   
   });
 
-  // create Firebase event for adding to the database and a row in the html when a user adds an entry
-	database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
-	  console.log(childSnapshot.val());
+    console.log(childSnapshot.val());
+
+    // get the values and store them into a variable.
+    var name = childSnapshot.val().name;
+    var role = childSnapshot.val().role;
+    var date = childSnapshot.val().date;
+    var months = childSnapshot.val().months;
+    var start = childSnapshot.val().start;
+    var rate = childSnapshot.val().rate;
+
 
 	  // get the values and store them into a variable.
 	  var name = childSnapshot.val().name;
@@ -61,6 +70,7 @@ var config = {
     // Add each data into the table
 	  $(".table").append("<tr><td>" + name + "</td><td>" +  + "</td><td>" + role + 
     "</td><td>" + start + "</td><td>" + months + "</td><td>" + rate + "</td></tr>");
+
 
 });
 });
