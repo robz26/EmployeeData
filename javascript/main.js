@@ -19,9 +19,9 @@ var config = {
       var name = $("#name").val().trim();
       var role = $("#role").val().trim();
       var date = $("#date").val().trim();
-      var name = $("#months").val().trim();
-      var name = $("#start").val().trim();
-      var name = $("#rate").val().trim();
+      var months = $("#months").val().trim();
+      var start = $("#start").val().trim();
+      var rate = $("#rate").val().trim();
 
         
         // add data to firebase
@@ -47,7 +47,7 @@ var config = {
   
   });
 
-  // create Firebase event for adding train to the database and a row in the html when a user adds an entry
+  // create Firebase event for adding to the database and a row in the html when a user adds an entry
 	database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 	  console.log(childSnapshot.val());
@@ -58,6 +58,10 @@ var config = {
 	  var date = childSnapshot.val().date;
 	  var months = childSnapshot.val().months;
 	  var start = childSnapshot.val().start;
-	  var rate = childSnapshot.val(). rate;
+    var rate = childSnapshot.val(). rate;
+    
+    // Add each data into the table
+	  $("#table > tbody").append("<tr><td>" + name + "</td><td>" +  + "</td><td>" + role + 
+    "</td><td>" + date + "</td><td>" + months + "</td><td>" + start + "</td><td>" + rate + "</td></tr>");
 
 });
