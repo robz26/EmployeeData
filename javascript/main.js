@@ -9,4 +9,16 @@ var config = {
   };
   firebase.initializeApp(config);
 
-  
+  var database = firebase.database();
+
+  ("body").on("click", "#submit", function(){
+      var name = $("#name").val().trim()
+      var role = $("#role").val().trim()
+      var date = $("#date").val().trim()
+      var name = $("#months").val().trim()
+      var name = $("#start").val().trim()
+      var name = $("#rate").val().trim()
+
+      var newRow;
+      var 
+  })
