@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyAKhtdAL06SFSz2tgxoJHszhKl1-jLI3TU",
@@ -18,9 +20,8 @@ var config = {
       // create variables to store and grab user input
       var name = $("#name").val().trim();
       var role = $("#role").val().trim();
-      var date = $("#date").val().trim();
-      var months = $("#months").val().trim();
       var start = $("#start").val().trim();
+      var months = $("#months").val().trim();
       var rate = $("#rate").val().trim();
 
         
@@ -28,9 +29,8 @@ var config = {
       database.ref().push({
         name: name,
         role: role,
-        date: date,
-        months: months,
         start: start,
+        months: months,
         rate: rate
         });
 
@@ -40,9 +40,8 @@ var config = {
     // clear all of the text-boxes for new submission
       $("#name").val("");
       $("#role").val("");
-      $("#date").val("");
-      $("#months").val("");
       $("#start").val("");
+      $("#months").val("");
       $("#rate").val("");
   
   });
@@ -55,13 +54,13 @@ var config = {
 	  // get the values and store them into a variable.
 	  var name = childSnapshot.val().name;
 	  var role = childSnapshot.val().role;
-	  var date = childSnapshot.val().date;
-	  var months = childSnapshot.val().months;
 	  var start = childSnapshot.val().start;
+	  var months = childSnapshot.val().months;
     var rate = childSnapshot.val(). rate;
     
     // Add each data into the table
-	  $("#table > tbody").append("<tr><td>" + name + "</td><td>" +  + "</td><td>" + role + 
-    "</td><td>" + date + "</td><td>" + months + "</td><td>" + start + "</td><td>" + rate + "</td></tr>");
+	  $(".table").append("<tr><td>" + name + "</td><td>" +  + "</td><td>" + role + 
+    "</td><td>" + start + "</td><td>" + months + "</td><td>" + rate + "</td></tr>");
 
+});
 });
